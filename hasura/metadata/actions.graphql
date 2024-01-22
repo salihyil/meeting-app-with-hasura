@@ -1,0 +1,40 @@
+type Mutation {
+  login(
+    data: LoginInput!
+  ): LoginOutput
+}
+
+type Query {
+  me: meOutput
+}
+
+type Mutation {
+  register(
+    data: RegisterInput!
+  ): RegisterOutput
+}
+
+input RegisterInput {
+  email: String!
+  password: String!
+  name: String!
+  surname: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type RegisterOutput {
+  accessToken: String!
+}
+
+type LoginOutput {
+  accessToken: String!
+}
+
+type meOutput {
+  user_id: Int!
+}
+

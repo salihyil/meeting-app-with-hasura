@@ -1,0 +1,29 @@
+table:
+  name: users
+  schema: public
+array_relationships:
+  - name: meetings
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: meetings
+          schema: public
+computed_fields:
+  - name: fullName
+    definition:
+      function:
+        name: user_full_name
+        schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - email
+        - id
+        - name
+        - surname
+      computed_fields:
+        - fullName
+      filter: {}
+    comment: ""
